@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cloudflare>
+            <general>
+                <enabled>0</enabled>
+                <api_key></api_key>
+                <email></email>
+                <zone_id></zone_id>
+                <enable_product_edit>0</enable_product_edit>
+            </general>
+        </cloudflare>
+    </default>
+</config> 

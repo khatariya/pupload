@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Brainvire_ProductUpload::config_cloudflare" title="Cloudflare Configuration" sortOrder="100"/>
+            </resource>
+        </resources>
+    </acl>
+</config> 

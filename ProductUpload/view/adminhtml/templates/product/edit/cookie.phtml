@@ -1,0 +1,29 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+$isEnabled = $block->getData('is_enabled');
+if ($isEnabled):
+    $setCookieUrl = $block->getUrl('productupload/product/setcookie');
+?>
+<script>
+    require(['jquery'], function($) {
+        // Set cookie immediately without waiting for document ready
+        $.ajax({
+            url: '<?= $block->escapeUrl($setCookieUrl) ?>',
+            type: 'POST',
+            dataType: 'json',
+            showLoader: true,
+            success: function(response) {
+                console.log('Cookie Response:', response);
+                if (response.success) {
+                    console.log('Cloudflare cookie set successfully');
+                } else {
+                    console.error('Failed to set Cloudflare cookie:', response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error setting Cloudflare cookie:', error);
+            }
+        });
+    });
+</script>
+<?php endif; ?> 

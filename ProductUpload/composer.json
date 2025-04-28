@@ -1,0 +1,22 @@
+{
+    "name": "brainvire/product-upload",
+    "description": "Product Upload Module",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~7.4.0|~8.1.0|~8.2.0",
+        "cloudflare/sdk": "^1.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "magento/framework": "*",
+        "magento/module-backend": "*",
+        "magento/module-config": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Brainvire\\ProductUpload\\": ""
+        }
+    }
+} 

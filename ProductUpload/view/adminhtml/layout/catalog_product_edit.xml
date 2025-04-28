@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Brainvire_ProductUpload::js/product-edit.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Template" name="product_edit_cookie" template="Brainvire_ProductUpload::product/edit/cookie.phtml" before="-">
+                <arguments>
+                    <argument name="is_enabled" xsi:type="helper" helper="Brainvire\ProductUpload\Helper\Data::isProductEditCookieEnabled"/>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page> 
