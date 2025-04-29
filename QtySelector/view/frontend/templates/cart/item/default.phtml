@@ -1,0 +1,29 @@
+<?php
+/**
+ * Custom Cart Item Template with Quantity Selector
+ * @var $block \Magento\Checkout\Block\Cart\Item\Renderer
+ */
+$item = $block->getItem();
+$product = $item->getProduct();
+$maxQty = $product->getStockItem()->getMaxSaleQty();
+$minQty = $product->getStockItem()->getMinSaleQty();
+$qty = (int)$item->getQty();
+$formKey = $block->getFormKey();
+?>
+<div class="qty-selector-wrapper" data-role="qty-selector" data-cart-item-id="<?= $item->getId() ?>">
+    <button class="qty-btn qty-decrease" type="button" aria-label="Decrease quantity">-</button>
+    <input class="qty-input" type="number" min="<?= $minQty ?>" max="<?= $maxQty ?>" value="<?= $qty ?>" />
+    <button class="qty-btn qty-increase" type="button" aria-label="Increase quantity">+</button>
+    <div class="qty-max-message" style="display:none;color:red;font-size:12px;"></div>
+    <input type="hidden" class="qty-form-key" value="<?= $formKey ?>" />
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Brainvire_QtySelector/js/qty-selector": {
+            "maxQty": <?= $maxQty ?>,
+            "minQty": <?= $minQty ?>
+        }
+    }
+}
+</script> 
