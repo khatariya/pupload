@@ -1,0 +1,36 @@
+<?php
+/**
+ * QtySelector JS initialization template
+ */
+echo "text";
+?>
+
+<script>
+    require(['jquery', 'domReady!'], function($) {
+        // Changed selector to match Magento's cart input
+        $('[data-role="cart-item-qty"]').each(function() {
+            var $input = $(this);
+            var $parent = $input.parent();
+            
+            if ($parent.find('.qty-selector-wrapper').length) {
+                return; // Already initialized
+            }
+            
+            $input.wrap('<div class="qty-selector-wrapper" data-role="qty-selector" data-cart-item-id="' + $input.attr('data-cart-item-id') + '"></div>');
+            var $wrapper = $input.parent();
+            
+            $wrapper.prepend('<button class="qty-btn qty-decrease" type="button" aria-label="Decrease quantity">-</button>');
+            $wrapper.append('<button class="qty-btn qty-increase" type="button" aria-label="Increase quantity">+</button>');
+            $wrapper.append('<div class="qty-max-message" style="display:none;color:red;font-size:12px;"></div>');
+            $wrapper.append('<input type="hidden" class="qty-form-key" value="' + $('input[name="form_key"]').val() + '" />');
+            
+            // Load the qty-selector JavaScript
+            require(['Brainvire_QtySelector/js/qty-selector'], function(qtySelector) {
+                qtySelector({
+                    maxQty: parseInt($input.attr('max') || 10000),
+                    minQty: parseInt($input.attr('min') || 1)
+                });
+            });
+        });
+    });
+</script>

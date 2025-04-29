@@ -1,13 +1,19 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <referenceBlock name="cart.item.renderer">
-            <action method="setTemplate">
-                <argument name="template" xsi:type="string">Brainvire_QtySelector::cart/item/default.phtml</argument>
-            </action>
-        </referenceBlock>
-    </body>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="Brainvire_QtySelector::css/qtyselector.css" />
     </head>
-</page> 
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="checkout.cart.form">
+                <referenceBlock name="checkout.cart.items">
+                    <block class="Magento\Framework\View\Element\Template" 
+                           name="brainvire.qtyselector" 
+                           template="Brainvire_QtySelector::qty_selector_js.phtml" 
+                           after="-" />
+                </referenceBlock>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>
